@@ -3,31 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Station Data</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            background-color: #f4f4f9;
         }
+
         h1 {
             color: #333;
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
         }
+
         .data-container {
             margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
         }
+
         .data-container div {
-            margin: 5px 0;
+            margin: 15px 0;
+            font-size: 20px;
         }
+
+        /* Styling for the Station ID */
+        #stationID {
+            font-size: 24px;  /* Slightly larger font */
+            font-weight: bold;
+            color: #2a5d84; /* Blue color */
+        }
+
+        /* Styling for Wind Speed */
+        #windSpeed {
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60; /* Green color */
+        }
+
+        /* Styling for Wind Gust */
+        #windGust {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e74c3c; /* Red color */
+        }
+
+        /* Styling for Wind Direction */
+        #winddir {
+            font-size: 20px;
+            font-weight: bold;
+            color: #f39c12; /* Orange color */
+        }
+
+        /* Add hover effects */
+        .data-container div:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s ease;
+        }
+
     </style>
 </head>
 <body>
-    <h1>Weather Station Data</h1>
     <div class="data-container">
-        <div id="stationID">Station ID: Loading...</div>
-        <div id="winddir">Wind Direction: Loading...</div>
-        <div id="windSpeed">Wind Speed: Loading...</div>
-        <div id="windGust">Wind Gust: Loading...</div>
+        <div id="location">Loading...</div>
+        <div id="windSpeedGust">Loading...</div>
+        <div id="winddir">Loading...</div>
     </div>
 
     <script>
@@ -38,17 +84,22 @@
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
-                    // Extract the relevant data
-                    const stationID = data.observations[0].stationID;
-                    const winddir = data.observations[0].winddir;
-                    const windSpeed = data.observations[0].metric.windSpeed;
-                    const windGust = data.observations[0].metric.windGust;
+                    // Check if the response data has valid observations
+                    if (data.observations && data.observations.length > 0) {
+                        // Extract the relevant data
+                        const stationId = data.observations[0].neighborhood;
+                        const winddir = data.observations[0].winddir;  // Wind direction in degrees
+                        const windSpeed = data.observations[0].metric.windSpeed; // Wind speed in m/s
+                        const windGust = data.observations[0].metric.windGust;  // Wind gust in m/s
                     
-                    // Update the HTML with the data
-                    document.getElementById('stationID').innerText = `Station ID: ${stationID}`;
-                    document.getElementById('winddir').innerText = `Wind Direction: ${winddir}°`;
-                    document.getElementById('windSpeed').innerText = `Wind Speed: ${windSpeed}`;
-                    document.getElementById('windGust').innerText = `Wind Gust: ${windGust} m/s`;
+                        // Update the HTML with the data
+                        document.getElementById('location').innerText = `${stationId}`; // Set the location name
+                        document.getElementById('windSpeedGust').innerText = `${windSpeed} / ${windGust}`; // Combined Wind Speed / Wind Gust
+                        document.getElementById('winddir').innerText = `${winddir}°`; // Wind Direction
+                    } else {
+                        console.error('No observations data found.');
+                        alert('Failed to fetch weather data: No data available.');
+                    }
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
