@@ -8,8 +8,8 @@ body {
 h1 {
     color: #333;
     text-align: center;
-    font-size: 36px;
-    margin-bottom: 20px;
+    font-size: 0px;
+    margin-bottom: 0px;
 }
 
 .data-container {
@@ -17,13 +17,13 @@ h1 {
     background-color: rgba(255, 255, 255, 0.0);  /* Semi-transparent background */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 5px; /* Reduced padding */
-    max-width: 100px;
+    padding: 0px; /* Reduced padding */
+    max-width: 50px;
     margin: 0 auto;
 }
 
 .data-container div {
-    margin: 4px 0;  /* Further reduced margin between divs */
+    margin: 0px 0;  /* Further reduced margin between divs */
     font-size: 20px;
 }
 
@@ -34,25 +34,11 @@ h1 {
     color: #2a5d84; /* Blue color */
 }
 
-/* Styling for Wind Speed */
-#windSpeed {
-    font-size: 20px;
-    font-weight: bold;
-    color: #27ae60; /* Green color */
-}
-
 /* Styling for Wind Gust */
 #windGust {
     font-size: 20px;
     font-weight: bold;
     color: #e74c3c; /* Red color */
-}
-
-/* Styling for Wind Direction */
-#winddir {
-    font-size: 20px;
-    font-weight: bold;
-    color: #f39c12; /* Orange color */
 }
 
 /* Add hover effects */
