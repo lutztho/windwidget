@@ -3,113 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f4f4f9;
-}
-
-h1 {
-    color: #333;
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.data-container {
-    margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.5);  /* Semi-transparent background */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 5px; /* Reduced padding */
-    max-width: 100px;
-    margin: 0 auto;
-}
-
-.data-container div {
-    margin: 4px 0;  /* Further reduced margin between divs */
-    font-size: 20px;
-}
-
-/* Styling for the Station ID */
-#stationID {
-    font-size: 24px;  /* Slightly larger font */
-    font-weight: bold;
-    color: #2a5d84; /* Blue color */
-}
-
-/* Styling for Wind Speed */
-#windSpeed {
-    font-size: 20px;
-    font-weight: bold;
-    color: #27ae60; /* Green color */
-}
-
-/* Styling for Wind Gust */
-#windGust {
-    font-size: 20px;
-    font-weight: bold;
-    color: #e74c3c; /* Red color */
-}
-
-/* Styling for Wind Direction */
-#winddir {
-    font-size: 20px;
-    font-weight: bold;
-    color: #f39c12; /* Orange color */
-}
-
-/* Add hover effects */
-.data-container div:hover {
-    transform: scale(1.05);
-    transition: transform 0.2s ease;
-}
-
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <title>Weather Station</title>
 </head>
 <body>
+    <h1>Weather Station</h1>
     <div class="data-container">
-        <div id="location">Loading...</div>
-        <div id="windSpeedGust">Loading...</div>
+        <div id="stationID">Loading...</div>
+        <div id="winddir">Loading...</div>
+        <div id="windSpeed">Loading...</div>
+        <div id="windGust">Loading...</div>
     </div>
 
-    <script>
-        // Function to fetch the data from the API
-        function fetchWeatherData() {
-            const apiUrl = "https://api.weather.com/v2/pws/observations/current?apiKey=e1f10a1e78da46f5b10a1e78da96f525&stationId=IBOLVA20&format=json&units=m";
-            
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    // Check if the response data has valid observations
-                    if (data.observations && data.observations.length > 0) {
-                        // Extract the relevant data
-                        const stationId = data.observations[0].neighborhood;
-                        const winddir = data.observations[0].winddir;  // Wind direction in degrees
-                        const windSpeed = data.observations[0].metric.windSpeed; // Wind speed in m/s
-                        const windGust = data.observations[0].metric.windGust;  // Wind gust in m/s
-                    
-                        // Update the HTML with the data
-                        document.getElementById('location').innerText = `${stationId}`; // Set the location name
-                        document.getElementById('windSpeedGust').innerText = `${winddir}° ${windSpeed} / ${windGust}`; // Combined Wind Speed / Wind Gust
-                    } else {
-                        console.error('No observations data found.');
-                        alert('Failed to fetch weather data: No data available.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                    alert('Failed to fetch weather data.');
-                });
-        }
-
-        // Fetch data immediately when the page loads
-        fetchWeatherData();
-        
-        // Refresh the data every 60 seconds (60000 milliseconds)
-        setInterval(fetchWeatherData, 60000);
-    </script>
+    <script src="script.js"></script> <!-- Link to external JavaScript file -->
 </body>
 </html>
