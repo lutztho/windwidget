@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0px;
     background-color: #f4f4f9;
+    font-size: 20px;
 }
 
 h1 {
@@ -14,40 +15,34 @@ h1 {
 
 .data-container {
     margin-top: 0px;
-    margin-bottom: 0;
+    margin-bottom: 0px;
     background-color: rgba(255, 255, 255, 0.0);  /* Semi-transparent background */
-    border-radius: 8px;
+    border-radius: 0px;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
     padding: 0px; /* Reduced padding */
-    max-width: 100px;
-    margin: 0 auto;
+    max-width: auto;
+    margin: 0px;
+    max-height: fit-content;
+    
+
 }
 
 .data-container div {
     margin: 0px 0;  /* Further reduced margin between divs */
-    font-size: 20px;
 }
 
 /* Styling for the Station ID */
-#stationID {
-    font-size: 24px;  /* Slightly larger font */
-    font-weight: bold;
-    color: #2a5d84; /* Blue color */
-}
+
 
 /* Styling for Wind Gust */
-#windGust {
-    font-size: 20px;
-    font-weight: bold;
-    color: #e74c3c; /* Red color */
-}
 
-/* Add hover effects */
-.data-container div:hover {
-    transform: scale(1.05);
-    transition: transform 0.2s ease;
-}
-.weather-station-container {
+
+.weather-station-container iframe{
+    width: 100%;  /* Make iframe take full width of its container */
+    height: 60px;  /* Fixed height for iframe */
+    border: none;   /* Remove any border */
+    margin: 0;      /* Remove margin */
+    padding: 0;     /* Remove padding */
     display: flex;
     flex-direction: column; /* Stack items vertically */
     gap: 0px; /* Space between iframes */
