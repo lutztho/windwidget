@@ -13,11 +13,9 @@ function fetchWeatherData() {
                 const windSpeed = data.observations[0].metric.windSpeed; // Wind speed in m/s
                 const windGust = data.observations[0].metric.windGust;  // Wind gust in m/s
             
-                // Update the HTML with the data
-                document.getElementById('stationID').innerText = `${stationId}`; // Set the station ID
-                document.getElementById('winddir').innerText = `Direction: ${winddir}°`; // Wind direction
-                document.getElementById('windSpeed').innerText = `Wind Speed: ${windSpeed} m/s`; // Wind Speed
-                document.getElementById('windGust').innerText = `Wind Gust: ${windGust} m/s`; // Wind Gust
+     // Update the HTML with the data
+     document.getElementById('location').innerText = `${stationId}`; // Set the location name
+     document.getElementById('windSpeedGust').innerText = `${winddir}° ${windSpeed} / ${windGust}`; // Combined Wind Speed / Wind Gust
             } else {
                 console.error('No observations data found.');
                 alert('Failed to fetch weather data: No data available.');
