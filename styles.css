@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 10px;
+    padding: 0px;
     background-color: #f4f4f9;
 }
 
@@ -13,7 +13,7 @@ h1 {
 }
 
 .data-container {
-    margin-top: 5px;
+    margin-top: 0px;
     background-color: rgba(255, 255, 255, 0.0);  /* Semi-transparent background */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -63,7 +63,7 @@ h1 {
 .weather-station-container {
     display: flex;
     flex-direction: column; /* Stack items vertically */
-    gap: 10px; /* Space between iframes */
+    gap: 0px; /* Space between iframes */
     align-items: center; /* Center iframes horizontally */
-    margin-top: 10px;
+    margin-top: 0px;
 }
