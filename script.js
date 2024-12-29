@@ -40,7 +40,7 @@ function fetchWeatherData() {
             
      // Update the HTML with the data
                 document.getElementById('location').innerText = `${stationId}`; // Set the location name
-                document.getElementById('windSpeedGust').innerText = `${windname}° ${windSpeed} / ${windGust}`; // Combined Wind Speed / Wind Gust
+                document.getElementById('windSpeedGust').innerText = `${windname} ${windSpeed} / ${windGust}`; // Combined Wind Speed / Wind Gust
             } else {
                 console.error('No observations data found.');
                 alert('Failed to fetch weather data: No data available.');
